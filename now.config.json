@@ -1,0 +1,6 @@
+{
+    "scope": "x_1311940_iam",
+    "scopeId": "14cbecc77547414db6b5ec701cf7059d",
+    "name": "iam",
+    "tsconfigPath": "./src/server/tsconfig.json"
+}
