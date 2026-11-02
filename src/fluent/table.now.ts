@@ -80,9 +80,9 @@ export const x_1311940_iam_job_role = Table({
 
 
 
-export const x_1311940_iam_task = Table({
-    name: 'x_1311940_iam_task',
-    label: 'IAM Task',
+export const x_1311940_iam_automation_task = Table({
+    name: 'x_1311940_iam_automation_task',
+    label: 'Automation Task',
     schema: {
         active: BooleanColumn({
             label: 'Active',
@@ -222,6 +222,94 @@ export const x_1311940_iam_standard_task = Table({
     name: 'x_1311940_iam_standard_task',
     label: 'IAM Standard Task',
     schema: {
-        
+        task_name: StringColumn({
+            label: 'Task Name',
+            mandatory: true,
+        }),
+        task_info: StringColumn({
+            label: 'Task Info',
+        }),
+        role: StringColumn({
+            label: 'Role'
+        }),
+        ad_group_add: ListColumn({
+            label: 'AD Group Add',
+            referenceTable: 'x_1311940_iam_group',
+            referenceQual: 'source=Active Directory',
+        }),
+        ad_group_remove: ListColumn({
+            label: 'AD Group Remove',
+            referenceTable: 'x_1311940_iam_group',
+            referenceQual: 'source=Active Directory',
+        }),
+        entra_id_group_add: ListColumn({
+            label: 'Entra ID Group Add',
+            referenceTable: 'x_1311940_iam_group',
+            referenceQual: 'source=Entra ID',
+        }),
+        entra_id_group_remove: ListColumn({
+            label: 'Entra ID Group Remove',
+            referenceTable: 'x_1311940_iam_group',
+            referenceQual: 'source=Entra ID',
+        }),
+        description: StringColumn({
+            label: 'Description',
+        }),
+        assignment_group: ReferenceColumn({
+            label: 'Assignment Group',
+            referenceTable: 'sys_user_group',
+        }),
+        internal_task: BooleanColumn({
+            label: 'Internal Task',
+            defaultValue: true,
+        }),
+        area: ChoiceColumn({
+            label: 'Area',
+            choices: {
+                1: { value: 'system access', label: 'System Access' },
+                2: { value: 'onboarding', label: 'Onboarding' },
+                3: { value: 'offboarding', label: 'Offboarding' },
+                4: { value: 'role modification', label: 'Role Modification' },
+            },
+        }),
+        system: ReferenceColumn({
+            label: 'System',
+            referenceTable: 'cmdb_ci_service',
+        }),
+    }
+})
+
+export const x_1311940_iam_access_duration = Table({
+    name: 'x_1311940_iam_access_duration',
+    label: 'IAM Access Duration',
+    schema: {
+        user: ReferenceColumn({
+            label: 'User',
+            referenceTable: 'sys_user',
+        }),
+        start_date: DateTimeColumn({
+            label: 'Start Date',
+            mandatory: true,
+        }),
+        end_date: DateTimeColumn({
+            label: 'End Date',
+        }),
+        role: ReferenceColumn({
+            label: 'Role',
+            referenceTable: 'x_1311940_iam_job_role',
+            mandatory: true,
+        }),
+        group: ReferenceColumn({
+            label: 'Group',
+            referenceTable: 'x_1311940_iam_group',
+        }),
+        primary: BooleanColumn({
+            label: 'Primary',
+            defaultValue: false,
+        }),
+        active: BooleanColumn({
+            label: 'Active',
+            defaultValue: true,
+        }),
     }
 })
