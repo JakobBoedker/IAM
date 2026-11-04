@@ -27,10 +27,10 @@ export function onboarding (request: RESTAPIRequest, response: RESTAPIResponse):
 
     try {
         const reqString = request.body.dataString;
-        const result = onBoarding(reqString);
+        const result = (reqString);
         
         const ans = {
-            onboarding_tasks: result
+            offboarding_tasks: result
         };
         
         response.setContentType('application/json');
@@ -44,4 +44,24 @@ export function onboarding (request: RESTAPIRequest, response: RESTAPIResponse):
 }       
 
 
+
+ export function mover (request: RESTAPIRequest, response: RESTAPIResponse): void {
+
+    try {
+        const reqString = request.body.dataString;
+        const result = (reqString);
+        
+        const ans = {
+            mover_tasks: result
+        };
+        
+        response.setContentType('application/json');
+        response.setStatus(200);
+        response.setBody(ans);
+
+    } catch (error) {
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        gs.logError(`Error in OnBoarding process: ${message}`);
+    }
+}       
 
