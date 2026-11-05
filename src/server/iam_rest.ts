@@ -1,5 +1,6 @@
 import { RESTAPIRequest, RESTAPIResponse } from '@servicenow/glide/sn_ws_int'
 import { onBoarding } from './iam_utils'
+import { sendGroups } from './update_groups'
 import { gs } from '@servicenow/glide';
 
 export function onboarding (request: RESTAPIRequest, response: RESTAPIResponse): void {
@@ -64,4 +65,33 @@ export function onboarding (request: RESTAPIRequest, response: RESTAPIResponse):
         gs.logError(`Error in OnBoarding process: ${message}`);
     }
 }       
+
+export function groups (request: RESTAPIRequest, response: RESTAPIResponse): void {
+    // Call the sendGroups function and handle the response
+    // endpoint payload should look like this: 
+    /*
+    {
+        "name": "LIC-Admin",
+        "guid": "1234567890",
+        "source": "Active Directory",
+        "description": "User description"
+    }
+    */
+
+    try {
+        const reqJSON = JSON.parse(request.body.dataString);
+        const result = sendGroups(reqJSON);
+
+        const ans = {
+            status: result
+        };
+
+        response.setContentType('application/json');
+        response.setStatus(200);
+        response.setBody(ans);
+    } catch (error) {
+        const message = error instanceof Error ? error.message : 'Unknown error';
+        gs.logError(`Error in sending groups: ${message}`);
+    }
+}
 

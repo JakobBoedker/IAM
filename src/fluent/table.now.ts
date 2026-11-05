@@ -1,7 +1,7 @@
 import { BooleanColumn, ChoiceColumn, DateTimeColumn, ListColumn, StringColumn, ReferenceColumn, Table } from '@servicenow/sdk/core'
 
-export const x_1311940_iam_group = Table({
-    name: 'x_1311940_iam_group',
+export const x_2194970_iam_group = Table({
+    name: 'x_2194970_iam_group',
     label: 'IAM Group',
     schema: {
         name: StringColumn({
@@ -38,20 +38,20 @@ export const x_1311940_iam_group = Table({
         }),
         sod_rule: ListColumn({
             label: 'SoD Rule',
-            reference: 'x_1311940_iam_sod_rule',
+            reference: 'x_2194970_iam_sod_rule',
         }),
         last_sync: DateTimeColumn({
             label: 'Last Sync',
         }),
         in_role: ListColumn({
             label: 'In Role',
-            reference: 'x_1311940_iam_job_role',
+            reference: 'x_2194970_iam_job_role',
         }),
     }
 })
 
-export const x_1311940_iam_job_role = Table({
-    name: 'x_1311940_iam_job_role',
+export const x_2194970_iam_job_role = Table({
+    name: 'x_2194970_iam_job_role',
     label: 'IAM Job Role',
     schema: {
         name: StringColumn({
@@ -69,19 +69,19 @@ export const x_1311940_iam_job_role = Table({
         }),
         groups: ListColumn({
             label: 'Groups',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
         }),
         standard_tasks: ListColumn({
             label: 'Standard Tasks',
-            referenceTable: 'x_1311940_iam_task',
+            referenceTable: 'x_2194970_iam_task',
         }),
     }
 })
 
 
 
-export const x_1311940_iam_automation_task = Table({
-    name: 'x_1311940_iam_automation_task',
+export const x_2194970_iam_automation_task = Table({
+    name: 'x_2194970_iam_automation_task',
     label: 'Automation Task',
     schema: {
         active: BooleanColumn({
@@ -107,7 +107,7 @@ export const x_1311940_iam_automation_task = Table({
         }),
         role: ReferenceColumn({
             label: 'Role',
-            referenceTable: 'x_1311940_iam_job_role',
+            referenceTable: 'x_2194970_iam_job_role',
         }),
         approver_1: ReferenceColumn({
             label: 'Approver 1',
@@ -119,22 +119,22 @@ export const x_1311940_iam_automation_task = Table({
         }),
         ad_group_add: ListColumn({
             label: 'AD Group Add',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Active Directory',
         }),
         ad_group_remove: ListColumn({
             label: 'AD Group Remove',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Active Directory',
         }),
         entra_id_group_add: ListColumn({
             label: 'Entra ID Group Add',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Entra ID',
         }),
         entra_id_group_remove: ListColumn({
             label: 'Entra ID Group Remove',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Entra ID',
         }),
         message: StringColumn({
@@ -146,8 +146,8 @@ export const x_1311940_iam_automation_task = Table({
 
 
 
-export const x_1311940_iam_log = Table({
-    name: 'x_1311940_iam_log',
+export const x_2194970_iam_log = Table({
+    name: 'x_2194970_iam_log',
     label: 'IAM Log',
     schema: {
         user: ReferenceColumn({
@@ -156,7 +156,7 @@ export const x_1311940_iam_log = Table({
         }),
         role: ReferenceColumn({
             label: 'Role',
-            referenceTable: 'x_1311940_iam_job_role',
+            referenceTable: 'x_2194970_iam_job_role',
         }),
         approver_1: ReferenceColumn({
             label: 'Approver 1',
@@ -190,19 +190,19 @@ export const x_1311940_iam_log = Table({
         }),
         previous_role: ReferenceColumn({
             label: 'Previous Role',
-            referenceTable: 'x_1311940_iam_job_role',
+            referenceTable: 'x_2194970_iam_job_role',
         }),
         new_role: ReferenceColumn({
             label: 'New Role',
-            referenceTable: 'x_1311940_iam_job_role',
+            referenceTable: 'x_2194970_iam_job_role',
         }),
         groups_added: ListColumn({
             label: 'Groups Added',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
         }),
         groups_removed: ListColumn({
             label: 'Groups Removed',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
         }),
         request_item: ReferenceColumn({
             label: 'Request Item',
@@ -210,7 +210,7 @@ export const x_1311940_iam_log = Table({
         }),
         automation_task: ReferenceColumn({
             label: 'Automation Task',
-            referenceTable: 'x_1311940_iam_task',
+            referenceTable: 'x_2194970_iam_task',
         }),
         message: StringColumn({
             label: 'Message',
@@ -218,8 +218,8 @@ export const x_1311940_iam_log = Table({
     }
 })
 
-export const x_1311940_iam_standard_task = Table({
-    name: 'x_1311940_iam_standard_task',
+export const x_2194970_iam_standard_task = Table({
+    name: 'x_2194970_iam_standard_task',
     label: 'IAM Standard Task',
     schema: {
         task_name: StringColumn({
@@ -234,22 +234,22 @@ export const x_1311940_iam_standard_task = Table({
         }),
         ad_group_add: ListColumn({
             label: 'AD Group Add',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Active Directory',
         }),
         ad_group_remove: ListColumn({
             label: 'AD Group Remove',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Active Directory',
         }),
         entra_id_group_add: ListColumn({
             label: 'Entra ID Group Add',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Entra ID',
         }),
         entra_id_group_remove: ListColumn({
             label: 'Entra ID Group Remove',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
             referenceQual: 'source=Entra ID',
         }),
         description: StringColumn({
@@ -279,8 +279,8 @@ export const x_1311940_iam_standard_task = Table({
     }
 })
 
-export const x_1311940_iam_access_duration = Table({
-    name: 'x_1311940_iam_access_duration',
+export const x_2194970_iam_access_duration = Table({
+    name: 'x_2194970_iam_access_duration',
     label: 'IAM Access Duration',
     schema: {
         user: ReferenceColumn({
@@ -296,12 +296,12 @@ export const x_1311940_iam_access_duration = Table({
         }),
         role: ReferenceColumn({
             label: 'Role',
-            referenceTable: 'x_1311940_iam_job_role',
+            referenceTable: 'x_2194970_iam_job_role',
             mandatory: true,
         }),
         group: ReferenceColumn({
             label: 'Group',
-            referenceTable: 'x_1311940_iam_group',
+            referenceTable: 'x_2194970_iam_group',
         }),
         primary: BooleanColumn({
             label: 'Primary',

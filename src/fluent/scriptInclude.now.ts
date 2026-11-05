@@ -4,6 +4,6 @@ ScriptInclude({
     $id: Now.ID['IAMUtils'],
     name: 'IAMUtils',
     active: true,
-    apiName: 'x_1311940_iam.IAMUtils',
+    apiName: 'x_2194970_iam.IAMUtils',
     script: Now.include('../server/iam_utils.ts'),
 })
